@@ -1,0 +1,20 @@
+### IDE ###
+.idea/
+*.iml
+
+### Gradle / build ###
+.gradle/
+build/
+out/
+target/
+
+### Logs ###
+*.log
+spring-shell.log
+
+### Archives ###
+*.zip
+
+### OS junk ###
+.DS_Store
+Thumbs.db

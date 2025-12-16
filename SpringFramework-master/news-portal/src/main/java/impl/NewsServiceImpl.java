@@ -1,6 +1,8 @@
 package impl;
 
 import entity.News;
+import exceptions.NewsNotFoundException;
+import static java.util.Arrays.stream;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,6 +13,7 @@ import service.NewsService;
 import specifications.NewsSpecifications;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -32,4 +35,14 @@ public class NewsServiceImpl implements NewsService {
         return newsRepository.findAll(spec, pageable);
     }
 
+    @Override
+    public News findById(Long id) {
+       return newsRepository.findById(id).orElseThrow(() -> new NewsNotFoundException(id));
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        newsRepository.findById(Math.toIntExact(id));
+        newsRepository.deleteById(Math.toIntExact(id));
+    }
 }

@@ -21,4 +21,8 @@ public final class NewsSpecifications {
         return (root, query, cb) ->
                 cb.greaterThanOrEqualTo(root.get("createDate"), created);
     }
+
+    public static Specification<News> findNewsById(Long newsId) {
+        return (root, query, cb) -> cb.equal(root.get("id"), newsId);
+    }
 }

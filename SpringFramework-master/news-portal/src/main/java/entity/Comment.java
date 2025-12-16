@@ -14,6 +14,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -33,9 +34,9 @@ public class Comment {
     @JoinColumn(name = "user_id", nullable = false)
     private User author;
     @Column(nullable = false)
-    private LocalDateTime createDate;
+    private Instant createDate;
     @Column
-    private LocalDateTime  updateDate;
+    private Instant  updateDate;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "news_id", nullable = false)
     private News news;

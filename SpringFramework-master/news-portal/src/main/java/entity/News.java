@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,9 +28,9 @@ public class News {
     @JoinColumn(name = "author_id", nullable = false)
     private User author;
     @Column(nullable = false)
-    private LocalDateTime  createDate;
+    private Instant createDate;
     @Column
-    private LocalDateTime updateDate;
+    private Instant updateDate;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;

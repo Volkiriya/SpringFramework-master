@@ -1,5 +1,5 @@
-package specifications;
-import entity.News;
+package com.example.springbootnewsportal.specifications;
+import com.example.springbootnewsportal.entity.News;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
 

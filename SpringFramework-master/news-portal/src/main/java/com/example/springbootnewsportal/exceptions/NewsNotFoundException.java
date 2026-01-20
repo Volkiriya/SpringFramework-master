@@ -1,4 +1,4 @@
-package exceptions;
+package com.example.springbootnewsportal.exceptions;
 
 public class NewsNotFoundException extends RuntimeException {
     public NewsNotFoundException(Long id) {

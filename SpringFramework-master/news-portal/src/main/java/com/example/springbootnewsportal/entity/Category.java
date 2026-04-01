@@ -2,39 +2,34 @@ package com.example.springbootnewsportal.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
 @Entity
-@Table(name = "comment")
-public class Comment {
+@Table(name = "categories")
+public class Category {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+    @Column(nullable = false, unique = true, length = 255)
+    private String summary;
     @Column(nullable = false)
-    private String text;
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User author;
-    @Column(nullable = false)
-    private Date createDate;
-    @Column
-    private Date updateDate;
-    @ManyToOne
-    @JoinColumn(name = "news_id", nullable = false)
-    private News news;
+    private String description;
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
+    private List<News> news = new ArrayList<>();
 }
